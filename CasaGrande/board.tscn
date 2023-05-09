@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3q7fd0edg78"]
+[gd_scene load_steps=3 format=3 uid="uid://b3q7fd0edg78"]
 
-[ext_resource type="ArrayMesh" uid="uid://b4tj1on4h1x2m" path="res://board.obj" id="1_dllca"]
+[sub_resource type="BoxMesh" id="BoxMesh_tvk7r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyypq"]
+albedo_color = Color(0.462745, 0.427451, 0.933333, 1)
 
 [node name="Board" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0406334, 0.263317, -0.963853, 0.0110909, 0.964709, 0.263084, 0.999113, -9.3215e-10, -0.0421198, -5.94538, 5.77128, -6.72276)
+far = 4003.02
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -1.04029e-10, -4.54725e-18, 0, -4.37114e-08, 1, -1.04029e-10, -1, -4.37114e-08, 3.8147e-06, 7.97615, -5.68434e-14)
+light_size = 0.996
+spot_angle = 73.125
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_dllca")
+transform = Transform3D(100, -2.98023e-08, 1.05879e-20, 2.98023e-06, 1, -3.55271e-13, -7.88861e-29, 4.44089e-16, 800, 0, 3.8147e-06, -5.68434e-14)
+mesh = SubResource("BoxMesh_tvk7r")
+surface_material_override/0 = SubResource("StandardMaterial3D_jyypq")
