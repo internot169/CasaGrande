@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3q7fd0edg78"]
+[gd_scene load_steps=4 format=3 uid="uid://b3q7fd0edg78"]
+
+[ext_resource type="Script" path="res://CameraController.gd" id="1_qyqgq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tvk7r"]
 
@@ -10,9 +12,10 @@ albedo_color = Color(0.462745, 0.427451, 0.933333, 1)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.0406334, 0.263317, -0.963853, 0.0110909, 0.964709, 0.263084, 0.999113, -9.3215e-10, -0.0421198, -5.94538, 5.77128, -6.72276)
 far = 4003.02
+script = ExtResource("1_qyqgq")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -1.04029e-10, -4.54725e-18, 0, -4.37114e-08, 1, -1.04029e-10, -1, -4.37114e-08, 3.8147e-06, 7.97615, -5.68434e-14)
+transform = Transform3D(1, -1.04029e-10, -4.54725e-18, 0, -4.37114e-08, 1, -1.04029e-10, -1, -4.37114e-08, -0.008, 7.976, 0)
 light_size = 0.996
 spot_angle = 73.125
 
