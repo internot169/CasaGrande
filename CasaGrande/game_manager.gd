@@ -25,28 +25,38 @@ func turn():
 func roll_dice():
 	# Random logic here
 	var rand = RandomNumberGenerator.new()
-	var num = int(rand.randf_range(0, 1) * 7)
+	var num = int((rand.randf_range(0, 1) * 6) + 1)
+	
 	# Display the visual
+	var dice = $UI/Dice2
+	var img = Image.new()
+	print(num)
+	img.load("res://dice" + str(num) + ".jpg")
+	print(img)
 	
-	# Return Random here
+	var tex = ImageTexture.create_from_image(img)
+	print(tex)
+	dice.texture = tex
 	
-	pass
+	return num
 	
 func move_token(spaces):
 	# Get the current player's token
 	
-	# 
+	# If negative, burn bonus tokens
+	
+	# Move in the corresponding direction
 	pass
 
 func lay_block():
 	pass
 
 func lay_platforms():
-	# Lay it
+	# Lay it	
 	
 	# earn money
 	
-	# Need some sort of recursion
+	# Need some sort of recursion w/ question to lay another
 	pass
 
 # Called when the node enters the scene tree for the first time.

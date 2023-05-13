@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cax20q47epvn6"]
+[gd_scene load_steps=3 format=3 uid="uid://cax20q47epvn6"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_n8qkr"]
+[ext_resource type="PackedScene" uid="uid://cxud4apv37bp4" path="res://ui.tscn" id="2_ls8pe"]
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_n8qkr")
+
+[node name="UI" parent="." instance=ExtResource("2_ls8pe")]
+
+[node name="Dice2" type="TextureRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
