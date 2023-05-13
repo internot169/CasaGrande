@@ -9,7 +9,7 @@
 [node name="Board" parent="." instance=ExtResource("1_0ml7a")]
 
 [node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
-players = [null]
+players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]
 
 [node name="Token" parent="." instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30012, 0.5, 0)
