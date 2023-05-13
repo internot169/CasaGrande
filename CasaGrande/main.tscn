@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd5wj6yu7wrrh"]
+
+[ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
+[ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
+[ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Board" parent="." instance=ExtResource("1_0ml7a")]
+
+[node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
+players = [null]
+
+[node name="Token" parent="." instance=ExtResource("3_81pnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30012, 0.5, 0)
+new_color = Color(0.239216, 0.635294, 0, 1)
+
+[node name="Token2" parent="." instance=ExtResource("3_81pnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.74155)
+new_color = Color(0.670588, 0.505882, 0.0352941, 1)
+
+[node name="Token3" parent="." instance=ExtResource("3_81pnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0209, 0.5, 0)
+new_color = Color(0.282353, 0.498039, 1, 1)
+
+[node name="Token4" parent="." instance=ExtResource("3_81pnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.971)

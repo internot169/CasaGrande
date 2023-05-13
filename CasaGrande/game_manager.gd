@@ -5,10 +5,12 @@ enum States {PLAYER_1_TURN, PLAYER_2_TURN, PLAYER_3_TURN, PLAYER_4_TURN, GAME_OV
 var curstate = States.PLAYER_4_TURN
 var game_ending = false
 
+@export
 var players = []
 
 func switch_turn():
 	var text = ""
+	var player = players[0]
 	
 	if curstate == States.PLAYER_1_TURN:
 		curstate = States.PLAYER_2_TURN

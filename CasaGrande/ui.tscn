@@ -17,7 +17,31 @@ offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 814.0
+offset_left = 995.0
 offset_top = 1.0
 offset_right = 1153.0
 offset_bottom = 41.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 85.0
+offset_right = 1152.0
+offset_bottom = 121.0
+text = "End Turn"
+
+[node name="Corner" type="Button" parent="."]
+visible = false
+offset_left = 996.0
+offset_top = 138.0
+offset_right = 1151.0
+offset_bottom = 174.0
+text = "End Turn"
+
+[node name="Burn" type="Button" parent="."]
+visible = false
+offset_left = 997.0
+offset_top = 196.0
+offset_right = 1152.0
+offset_bottom = 232.0
+text = "End Turn"
