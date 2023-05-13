@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3q7fd0edg78"]
+[gd_scene load_steps=5 format=3 uid="uid://b3q7fd0edg78"]
 
 [ext_resource type="Script" path="res://CameraController.gd" id="1_qyqgq"]
+[ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_b0xy6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tvk7r"]
 
@@ -23,3 +24,5 @@ spot_angle = 73.125
 transform = Transform3D(100, -2.98023e-08, 1.05879e-20, 2.98023e-06, 1, -3.55271e-13, -7.88861e-29, 4.44089e-16, 800, 0, 3.8147e-06, -5.68434e-14)
 mesh = SubResource("BoxMesh_tvk7r")
 surface_material_override/0 = SubResource("StandardMaterial3D_jyypq")
+
+[node name="GameManager" parent="." instance=ExtResource("2_b0xy6")]

@@ -7,7 +7,3 @@
 script = ExtResource("1_n8qkr")
 
 [node name="UI" parent="." instance=ExtResource("2_ls8pe")]
-
-[node name="Dice2" type="TextureRect" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0

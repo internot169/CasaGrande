@@ -2,20 +2,28 @@ extends Node3D
 
 enum States {PLAYER_1_TURN, PLAYER_2_TURN, PLAYER_3_TURN, PLAYER_4_TURN, GAME_OVER}
 
-var curstate = States.PLAYER_1_TURN
+var curstate = States.PLAYER_4_TURN
 var game_ending = false
 
 var players = []
 
 func switch_turn():
+	var text = ""
+	
 	if curstate == States.PLAYER_1_TURN:
 		curstate = States.PLAYER_2_TURN
+		text = "Player 2: Play"
 	elif curstate == States.PLAYER_2_TURN:
 		curstate = States.PLAYER_3_TURN
+		text = "Player 3: Play"
 	elif curstate == States.PLAYER_3_TURN:
 		curstate = States.PLAYER_4_TURN
+		text = "Player 4: Play"
 	elif curstate == States.PLAYER_4_TURN:
 		curstate = States.PLAYER_1_TURN
+		text = "Player 1: Play"
+	
+	$UI/RichTextLabel.text = text
 	
 	turn()
 
@@ -28,15 +36,7 @@ func roll_dice():
 	var num = int((rand.randf_range(0, 1) * 6) + 1)
 	
 	# Display the visual
-	var dice = $UI/Dice2
-	var img = Image.new()
-	print(num)
-	img.load("res://dice" + str(num) + ".jpg")
-	print(img)
-	
-	var tex = ImageTexture.create_from_image(img)
-	print(tex)
-	dice.texture = tex
+	$UI.display_dice(num)
 	
 	return num
 	
@@ -61,6 +61,7 @@ func lay_platforms():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	switch_turn()
 	roll_dice()
 
 
