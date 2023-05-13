@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd5wj6yu7wrrh"]
+[gd_scene load_steps=8 format=3 uid="uid://cd5wj6yu7wrrh"]
 
 [ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
 [ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
 [ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pkaf"]
+
+[sub_resource type="Sky" id="Sky_fnt0n"]
+sky_material = SubResource("ProceduralSkyMaterial_8pkaf")
+
+[sub_resource type="Environment" id="Environment_4gfpa"]
+background_mode = 2
+sky = SubResource("Sky_fnt0n")
+tonemap_mode = 2
+ssr_enabled = true
+ssr_fade_in = 0.0891905
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tasdl"]
+exposure_multiplier = 3.0
+auto_exposure_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -25,3 +42,9 @@ new_color = Color(0.282353, 0.498039, 1, 1)
 
 [node name="Token4" parent="." instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.971)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0406334, 0.263317, -0.963853, 0.0110909, 0.964709, 0.263083, 0.999113, -2.60556e-08, -0.0421198, -5.94538, 6.27128, -5.75176)
+environment = SubResource("Environment_4gfpa")
+attributes = SubResource("CameraAttributesPractical_tasdl")
+far = 4003.02
