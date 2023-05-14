@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd5wj6yu7wrrh"]
+[gd_scene load_steps=8 format=3 uid="uid://cd5wj6yu7wrrh"]
 
 [ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
 [ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
 [ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
-[ext_resource type="Script" path="res://CameraController.gd" id="4_3pp7a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pkaf"]
 
@@ -46,7 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.971)
 
 [node name="CameraHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34362)
-script = ExtResource("4_3pp7a")
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
 transform = Transform3D(-0.999796, -0.0181126, 0.00890992, -0.00388282, 0.605728, 0.795662, -0.0198085, 0.795466, -0.605675, -5.94538, 30.392, -2.1832)

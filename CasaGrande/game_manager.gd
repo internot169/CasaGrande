@@ -53,23 +53,10 @@ func move_token(spaces):
 	curr_player.board_position = (curr_player.board_position + spaces) % 20
 	curr_player.position = get_node("../Board").get_pos(curr_player.board_position)
 
-func lay_block():
-	pass
-
-func lay_platforms():
-	# Lay it	
-	
-	# earn money
-	
-	# Need some sort of recursion w/ question to lay another
-	pass
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	switch_turn()
 	turn()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func lay_block(x, y, z):
+	get_node("../Board").lay_block(x, y, z)

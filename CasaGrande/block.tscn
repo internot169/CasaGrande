@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq14ndcvsu0of"]
+[gd_scene load_steps=4 format=3 uid="uid://bq14ndcvsu0of"]
+
+[ext_resource type="Script" path="res://block.gd" id="1_wy1yl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q2hgn"]
 
@@ -6,6 +8,7 @@
 albedo_color = Color(0.768627, 0.313726, 0, 1)
 
 [node name="Block" type="Node3D"]
+script = ExtResource("1_wy1yl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_q2hgn")

@@ -1,6 +1,7 @@
 extends Control
 
 var textbox_open = false
+var block_selected = false
 var slider_value = 0
 
 func display_dice(num):
@@ -19,6 +20,7 @@ func display_player(p: Player, text):
 	label.text += "\nCoins: " + str(p.money)
 	label.text += "\nTokens: " + str(p.tokens_left)
 	label.text += "\nBoard Position: " + str(p.board_position)
+	label.text += "\nBonus Position: " + str(p.bonus_position)
 
 
 func _on_button_pressed():
@@ -31,6 +33,7 @@ func _on_movemore_pressed():
 	if(textbox_open):
 		var amount = int($Movemore/TextEdit.text)
 		get_node("..").move_token(amount)
+		get_node("..").curr_player.bonus_position -= amount
 		$Movemore/TextEdit.visible = false
 	else:
 		$Movemore/TextEdit.visible = true
@@ -38,5 +41,9 @@ func _on_movemore_pressed():
 	textbox_open = !textbox_open
 
 
-func _on_h_slider_value_changed(value):
-	get_node("/root/Main/CameraHolder").input = value
+func _on_lay_block_pressed():
+	var x = int($LayBlock/TextEdit.text)
+	var y = int($LayBlock/TextEdit2.text)
+	var z = int($LayBlock/TextEdit3.text)
+	
+	get_node("..").lay_block(x, y, z)

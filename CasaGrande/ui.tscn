@@ -33,6 +33,46 @@ offset_right = 1153.0
 offset_bottom = 159.0
 text = "End Turn"
 
+[node name="LayBlock" type="Button" parent="."]
+layout_mode = 0
+offset_left = 998.0
+offset_top = 284.0
+offset_right = 1153.0
+offset_bottom = 320.0
+text = "Lay Block
+"
+
+[node name="TextEdit" type="TextEdit" parent="LayBlock"]
+offset_left = 2.0
+offset_top = 44.0
+offset_right = 635.0
+offset_bottom = 91.0
+scale = Vector2(0.24, 1)
+
+[node name="TextEdit2" type="TextEdit" parent="LayBlock"]
+offset_left = 2.0
+offset_top = 100.0
+offset_right = 635.0
+offset_bottom = 147.0
+scale = Vector2(0.24, 1)
+
+[node name="TextEdit3" type="TextEdit" parent="LayBlock"]
+offset_left = 2.0
+offset_top = 156.0
+offset_right = 635.0
+offset_bottom = 203.0
+scale = Vector2(0.24, 1)
+
+[node name="LayPlatform" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 998.0
+offset_top = 388.0
+offset_right = 1153.0
+offset_bottom = 424.0
+text = "Lay Platform
+"
+
 [node name="Movemore" type="Button" parent="."]
 layout_mode = 0
 offset_left = 997.0
@@ -48,24 +88,7 @@ offset_top = 42.0
 offset_right = 155.0
 offset_bottom = 89.0
 
-[node name="HSlider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 607.0
-offset_right = 203.0
-offset_bottom = 642.0
-max_value = 360.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HSlider"]
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -43.0
-offset_right = 210.0
-offset_bottom = -3.0
-text = "Rotate Board"
-
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LayBlock" to="." method="_on_lay_block_pressed"]
+[connection signal="pressed" from="LayPlatform" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Movemore" to="." method="_on_movemore_pressed"]
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
