@@ -31,20 +31,38 @@ offset_right = 1152.0
 offset_bottom = 121.0
 text = "End Turn"
 
-[node name="Corner" type="Button" parent="."]
-visible = false
+[node name="Movemore" type="Button" parent="."]
 layout_mode = 0
 offset_left = 996.0
 offset_top = 138.0
 offset_right = 1151.0
 offset_bottom = 174.0
-text = "End Turn"
+text = "Move More"
 
-[node name="Burn" type="Button" parent="."]
-visible = false
+[node name="TextEdit" type="TextEdit" parent="Movemore"]
 layout_mode = 0
-offset_left = 997.0
-offset_top = 196.0
-offset_right = 1152.0
-offset_bottom = 232.0
-text = "End Turn"
+offset_left = 1.0
+offset_top = 42.0
+offset_right = 155.0
+offset_bottom = 89.0
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 607.0
+offset_right = 203.0
+offset_bottom = 642.0
+max_value = 360.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HSlider"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -43.0
+offset_right = 210.0
+offset_bottom = -3.0
+text = "Rotate Board"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Movemore" to="." method="_on_movemore_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
