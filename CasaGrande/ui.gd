@@ -18,6 +18,7 @@ func display_player(p: Player, text):
 	label.text = text
 	label.text += "\nCoins: " + str(p.money)
 	label.text += "\nTokens: " + str(p.tokens_left)
+	label.text += "\nBoard Position: " + str(p.board_position)
 
 
 func _on_button_pressed():
@@ -39,4 +40,3 @@ func _on_movemore_pressed():
 
 func _on_h_slider_value_changed(value):
 	get_node("/root/Main/CameraHolder").input = value
-	print(get_node("/root/Main/CameraHolder").input)

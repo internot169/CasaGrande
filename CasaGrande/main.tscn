@@ -45,10 +45,12 @@ new_color = Color(0.282353, 0.498039, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.971)
 
 [node name="CameraHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34362)
 script = ExtResource("4_3pp7a")
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
-transform = Transform3D(-0.0406334, 0.263317, -0.963853, 0.0110909, 0.964709, 0.263083, 0.999113, -2.61002e-08, -0.0421198, -5.94538, 6.27128, -5.75176)
+transform = Transform3D(-0.999796, -0.0181126, 0.00890992, -0.00388282, 0.605728, 0.795662, -0.0198085, 0.795466, -0.605675, -5.94538, 30.392, -2.1832)
 environment = SubResource("Environment_4gfpa")
 attributes = SubResource("CameraAttributesPractical_tasdl")
+fov = 90.0
 far = 4003.02

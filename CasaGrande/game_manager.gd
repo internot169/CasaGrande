@@ -50,12 +50,8 @@ func roll_dice():
 	return num
 	
 func move_token(spaces):
-	# Get the current player's token
-	
-	# If negative, burn bonus tokens
-	
-	# Move in the corresponding direction
-	pass
+	curr_player.board_position = (curr_player.board_position + spaces) % 20
+	curr_player.position = get_node("../Board").get_pos(curr_player.board_position)
 
 func lay_block():
 	pass
@@ -71,7 +67,7 @@ func lay_platforms():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	switch_turn()
-	roll_dice()
+	turn()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

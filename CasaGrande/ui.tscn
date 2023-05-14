@@ -12,31 +12,33 @@ grow_vertical = 2
 script = ExtResource("1_sml6r")
 
 [node name="Dice" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 995.0
 offset_top = 1.0
 offset_right = 1153.0
-offset_bottom = 83.0
+offset_bottom = 119.0
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 997.0
-offset_top = 85.0
-offset_right = 1152.0
-offset_bottom = 121.0
+offset_left = 998.0
+offset_top = 123.0
+offset_right = 1153.0
+offset_bottom = 159.0
 text = "End Turn"
 
 [node name="Movemore" type="Button" parent="."]
 layout_mode = 0
-offset_left = 996.0
-offset_top = 138.0
-offset_right = 1151.0
-offset_bottom = 174.0
+offset_left = 997.0
+offset_top = 176.0
+offset_right = 1152.0
+offset_bottom = 212.0
 text = "Move More"
 
 [node name="TextEdit" type="TextEdit" parent="Movemore"]
@@ -55,6 +57,7 @@ offset_bottom = 642.0
 max_value = 360.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HSlider"]
+modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
