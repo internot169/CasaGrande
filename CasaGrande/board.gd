@@ -12,7 +12,7 @@ func get_pos(id):
 	return get_node(positions[id]).position
 
 func lay_block(x, y, z):
-	if(blocks[x][y][z] == null):
+	if(blocks[x][y][z] != null):
 		return
 	var block = load("res://block.tscn").instantiate()
 	get_tree().get_root().add_child(block)
