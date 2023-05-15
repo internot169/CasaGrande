@@ -15,3 +15,7 @@ mesh = SubResource("PlaneMesh_y780r")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.491798, 0, 0, 0, 1, 0, 0, 0, 0.496258, 0, 0.507772, 1.99721)
 mesh = SubResource("PlaneMesh_y780r")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.491798, 0, 0, 0, 1, 0, 0, 0, 0.496258, 0, 0.507772, 2.99986)
+mesh = SubResource("PlaneMesh_y780r")

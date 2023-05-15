@@ -2,6 +2,7 @@ class_name Block extends Node
 
 var new_color
 var platform = false
+var player
 
 func _process(delta):
 	$MeshInstance3D.get_active_material(0)

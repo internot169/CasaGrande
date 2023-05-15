@@ -84,5 +84,4 @@ func _ready():
 
 func lay_block(x, y, z):
 	if(can_lay_block):
-		can_lay_block = false
-		get_node("../Board").lay_block(x, y, z)
+		can_lay_block = !get_node("../Board").lay_block(x, y, z)
