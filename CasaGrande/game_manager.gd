@@ -5,16 +5,32 @@ enum States {PLAYER_1_TURN, PLAYER_2_TURN, PLAYER_3_TURN, PLAYER_4_TURN, GAME_OV
 # For testing purposes, start with player 4 to loop back to player 1
 var curstate = States.PLAYER_4_TURN
 var game_ending = false
+var game_ending_index = 0
 
 @export
 var players = []
 var curr_player
 var player_text
 
+var can_lay_block = true
+
 func _process(delta):
 	$UI.display_player(curr_player, player_text)
 	
+	if (curr_player.tokens_left == 0):
+		game_ending = true
+		switch_turn()
+		game_ending_index = 1
+	
 func switch_turn():
+	
+	if (game_ending_index == 4):
+		curstate = States.GAME_OVER
+		return
+		
+	if (game_ending):
+		game_ending_index += 1
+	
 	var text = ""
 	var player_path = ""
 	
@@ -43,6 +59,7 @@ func switch_turn():
 
 func turn():
 	move_token(roll_dice())
+	can_lay_block = true
 	
 func roll_dice():
 	# Random logic here
@@ -66,4 +83,6 @@ func _ready():
 	turn()
 
 func lay_block(x, y, z):
-	get_node("../Board").lay_block(x, y, z)
+	if(can_lay_block):
+		can_lay_block = false
+		get_node("../Board").lay_block(x, y, z)
