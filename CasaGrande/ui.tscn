@@ -43,6 +43,7 @@ text = "Lay Block
 "
 
 [node name="TextEdit" type="TextEdit" parent="LayBlock"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 44.0
 offset_right = 635.0
@@ -50,6 +51,7 @@ offset_bottom = 91.0
 scale = Vector2(0.24, 1)
 
 [node name="TextEdit2" type="TextEdit" parent="LayBlock"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 100.0
 offset_right = 635.0
@@ -57,6 +59,7 @@ offset_bottom = 147.0
 scale = Vector2(0.24, 1)
 
 [node name="TextEdit3" type="TextEdit" parent="LayBlock"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 156.0
 offset_right = 635.0

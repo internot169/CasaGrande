@@ -12,12 +12,40 @@ func get_pos(id):
 	return get_node(positions[id]).position
 
 func lay_block(x, y, z):
-	blocks[x][y][z] = load("res:block.gd")
-	get_node(blocks[x][y][z]).player = get_node("../GameManager").curr_player
+	var block = load("res://block.tscn").instantiate()
+	get_tree().get_root().add_child(block)
+	blocks[x][y][z] = block
+	block.new_color = get_node("../GameManager").curr_player.new_color
+	
+	block.position = Vector3(x + 4, y, z + 4)
+	
+	get_node("../GameManager").curr_player.tokens_left -= 1
+	
+	if(lay_platform(x,y,z)):
+		get_node("../GameManager").curr_player.money += 3
 	
 func lay_platform(x, y, z):
-	get_node("../GameManager").curr_player.money += 3
-	get_node("../GameManager").curr_player.tokens_left -= 1
+	if(x >= 3):
+		if((blocks[x][y][z] != null) && (blocks[x-3][y][z] != null) && !blocks[x-3][y][z].platform && !blocks[x][y][z].platform):
+			blocks[x][y][z].platform = true
+			blocks[x-3][y][z].platform = true
+			return true
+	elif(x <= width - 3):
+		if((blocks[x][y][z] != null) && (blocks[x+3][y][z] != null) && !blocks[x+3][y][z].platform && !blocks[x][y][z].platform):
+			blocks[x][y][z].platform = true
+			blocks[x+3][y][z].platform = true
+			return true
+	elif(y >= 3):
+		if((blocks[x][y][z] != null) && (blocks[x][y-3][z] != null) && !blocks[x][y][z].platform && !blocks[x][y-3][z].platform):
+			blocks[x][y][z].platform = true
+			blocks[x+3][y][z].platform = true
+			return true
+	elif(y <= width - 3):
+		if((blocks[x][y][z] != null) && (blocks[x][y+3][z] != null) && !blocks[x][y][z].platform && !blocks[x][y+3][z].platform):
+			blocks[x][y][z].platform = true
+			blocks[x+3][y][z].platform = true
+			return true
+	return false
 
 func _ready():
 	for i in width:

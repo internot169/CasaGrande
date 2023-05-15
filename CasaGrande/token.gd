@@ -19,3 +19,7 @@ func _ready():
 	$MeshInstance3D.set_surface_override_material(0, mat)
 	
 	position = get_node("../Board").get_pos(0)
+
+func check_corner():
+	if(board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
+		money += 3

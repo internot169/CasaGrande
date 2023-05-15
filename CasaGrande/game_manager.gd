@@ -9,7 +9,11 @@ var game_ending = false
 @export
 var players = []
 var curr_player
+var player_text
 
+func _process(delta):
+	$UI.display_player(curr_player, player_text)
+	
 func switch_turn():
 	var text = ""
 	var player_path = ""
@@ -32,6 +36,7 @@ func switch_turn():
 		player_path = players[0]
 	
 	curr_player = get_node(player_path)
+	player_text = text
 	
 	$UI.display_player(curr_player, text)
 	turn()
@@ -52,6 +57,8 @@ func roll_dice():
 func move_token(spaces):
 	curr_player.board_position = (curr_player.board_position + spaces) % 20
 	curr_player.position = get_node("../Board").get_pos(curr_player.board_position)
+	
+	curr_player.check_corner()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
