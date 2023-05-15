@@ -12,12 +12,14 @@ func get_pos(id):
 	return get_node(positions[id]).position
 
 func lay_block(x, y, z):
+	if(blocks[x][y][z] == null):
+		return
 	var block = load("res://block.tscn").instantiate()
 	get_tree().get_root().add_child(block)
 	blocks[x][y][z] = block
 	block.new_color = get_node("../GameManager").curr_player.new_color
 	
-	block.position = Vector3(x + 4, y, z + 4)
+	block.position = Vector3((x + 4) * -1, y, (z + 4))
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
 	

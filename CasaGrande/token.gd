@@ -22,4 +22,9 @@ func _ready():
 
 func check_corner():
 	if(board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
-		money += 3
+		bonus_position += 3
+
+func _process(delta):
+	if (bonus_position >= 9):
+		money += 9
+	bonus_position = 0
