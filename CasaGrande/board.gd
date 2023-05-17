@@ -21,7 +21,7 @@ func lay_block(x, y, z):
 	block.new_color = get_node("../GameManager").curr_player.new_color
 	block.player = get_node("../GameManager").curr_player
 	
-	block.position = Vector3(-x + 4, y, z + 4)
+	block.position = Vector3(-x + 4, y + 1, z + 4)
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
 	
