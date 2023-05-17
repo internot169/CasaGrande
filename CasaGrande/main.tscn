@@ -29,7 +29,7 @@ auto_exposure_enabled = true
 players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]
 
 [node name="Token" parent="." instance=ExtResource("3_81pnq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30012, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1, 0)
 new_color = Color(0.239216, 0.635294, 0, 1)
 
 [node name="Token2" parent="." instance=ExtResource("3_81pnq")]
@@ -47,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.971)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.34362)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
-transform = Transform3D(-0.999796, -0.0181126, 0.00890991, -0.00388282, 0.605728, 0.795662, -0.0198085, 0.795466, -0.605675, -5.94538, 30.392, -2.1832)
+transform = Transform3D(0.999518, 0.0296021, -0.00935947, 0.00819267, 0.039295, 0.999194, 0.029946, -0.998789, 0.0390336, -5.94538, 30.392, -2.1832)
 environment = SubResource("Environment_4gfpa")
 attributes = SubResource("CameraAttributesPractical_tasdl")
 fov = 90.0
