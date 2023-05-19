@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c587t6a43whbm"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ksk0e"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_ksk0e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Switch_to_level" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="CanvasLayer/Control/Switch_to_level" to="." method="_on_switch_to_level_pressed"]

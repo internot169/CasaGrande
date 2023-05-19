@@ -13,11 +13,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 63.3767)
 script = ExtResource("1_dva3j")
 positions = [NodePath("Positions/Position1"), NodePath("Positions/Position2"), NodePath("Positions/Position3"), NodePath("Positions/Position4"), NodePath("Positions/Position5"), NodePath("Positions/Position6"), NodePath("Positions/Position7"), NodePath("Positions/Position8"), NodePath("Positions/Position9"), NodePath("Positions/Position10"), NodePath("Positions/Position11"), NodePath("Positions/Position12"), NodePath("Positions/Position13"), NodePath("Positions/Position14"), NodePath("Positions/Position15"), NodePath("Positions/Position16"), NodePath("Positions/Position17"), NodePath("Positions/Position18"), NodePath("Positions/Position19"), NodePath("Positions/Position20")]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -1.04029e-10, -4.54725e-18, 0, -4.37114e-08, 1, -1.04029e-10, -1, -4.37114e-08, -0.008, 7.976, 0)
-light_size = 0.996
-spot_angle = 73.125
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(49.6266, -2.98023e-08, 2.4835e-21, 1.47899e-06, 0.999999, -8.33324e-14, 7.8297e-29, 4.44089e-16, 187.648, 0, 0.6, -395.157)
 material_override = SubResource("StandardMaterial3D_61btf")
@@ -28,7 +23,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.680856, 0, 0.7, -401.784)
 
 [node name="Position1" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13533, 0.5, -191.075)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13533, 6.3109, -191.075)
 
 [node name="Position2" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28166, 0.5, -200.016)
