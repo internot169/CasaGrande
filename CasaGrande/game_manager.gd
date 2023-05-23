@@ -85,3 +85,29 @@ func _ready():
 func lay_block(x, y, z):
 	if(can_lay_block):
 		can_lay_block = !get_node("../Board").lay_block(x, y, z)
+
+# Returns an array with [x_left_bound, x_right_bound, y_left_bound, y_right_bound]
+# -1 if no bound
+func get_x_y_bound():
+	var board_position = curr_player.board_position
+	pass
+	if (board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
+		# Corners are an edge case (no pun intended)
+		# Return -1 for all bounds
+		return [-1, -1, -1, -1]
+	elif (board_position == 1 || board_position == 14):
+		return [0, 2, -1, -1]
+	elif (board_position == 2 || board_position == 13):
+		return [2, 4, -1, -1]
+	elif (board_position == 3 || board_position == 12):
+		return [4, 6, -1, -1]
+	elif (board_position == 4 || board_position == 11):
+		return [6, 8, -1, -1]
+	elif (board_position == 6 || board_position == 19):
+		return [-1, -1, 0, 2]
+	elif (board_position == 7 || board_position == 18):
+		return [-1, -1, 2, 4]
+	elif (board_position == 8 || board_position == 17):
+		return [-1, -1, 4, 6]
+	elif (board_position == 9 || board_position == 16):
+		return [-1, -1, 6, 8]

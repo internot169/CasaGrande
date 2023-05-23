@@ -76,4 +76,6 @@ func _ready():
 			blocks[i].append([])
 			for k in height:
 				blocks[i][j].append(null)
+				
+
 			
