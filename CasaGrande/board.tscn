@@ -12,76 +12,13 @@ albedo_texture = ExtResource("2_juilx")
 [node name="Board" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 63.3767)
 script = ExtResource("1_dva3j")
-positions = [NodePath("Positions/Position1"), NodePath("Positions/Position2"), NodePath("Positions/Position3"), NodePath("Positions/Position4"), NodePath("Positions/Position5"), NodePath("Positions/Position6"), NodePath("Positions/Position7"), NodePath("Positions/Position8"), NodePath("Positions/Position9"), NodePath("Positions/Position10"), NodePath("Positions/Position11"), NodePath("Positions/Position12"), NodePath("Positions/Position13"), NodePath("Positions/Position14"), NodePath("Positions/Position15"), NodePath("Positions/Position16"), NodePath("Positions/Position17"), NodePath("Positions/Position18"), NodePath("Positions/Position19"), NodePath("Positions/Position20")]
+positions = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(49.6266, -2.98023e-08, 2.4835e-21, 1.47899e-06, 0.999999, -8.33324e-14, 7.8297e-29, 4.44089e-16, 187.648, 0, 0.6, -395.157)
 material_override = SubResource("StandardMaterial3D_61btf")
 mesh = SubResource("PlaneMesh_ejcem")
 skeleton = NodePath("")
-
-[node name="Positions" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.680856, 0, 0.7, -401.784)
-
-[node name="Position1" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13533, 6.3109, -191.075)
-
-[node name="Position2" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28166, 0.5, -200.016)
-
-[node name="Position3" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53898, 0.5, -208.111)
-
-[node name="Position4" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0165, 0.5, -195.798)
-
-[node name="Position5" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4109, 0.5, -203.351)
-
-[node name="Position6" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.303, 0.5, -211.94)
-
-[node name="Position7" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2989, 0.5, -121.217)
-
-[node name="Position8" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9458, 0.5, -32.9318)
-
-[node name="Position9" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.371, 0.5, 40.7143)
-
-[node name="Position10" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3963, 0.5, 118.553)
-
-[node name="Position11" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0637, 0.5, 184.989)
-
-[node name="Position12" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4809, 0.5, 186.087)
-
-[node name="Position13" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6174, 0.5, 180.888)
-
-[node name="Position14" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8027, 0.5, 178.713)
-
-[node name="Position15" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94075, 0.500002, 190.525)
-
-[node name="Position16" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58679, 0.499998, 188.613)
-
-[node name="Position17" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06657, 0.5, 117.258)
-
-[node name="Position18" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31261, 0.500004, 39.5394)
-
-[node name="Position19" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15252, 0.5, -37.2402)
-
-[node name="Position20" type="Node3D" parent="Positions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89924, 0.5, -110.99)
 
 [node name="InputGetter" type="Node3D" parent="."]
 script = ExtResource("3_f3ugf")

@@ -74,7 +74,7 @@ func roll_dice():
 func move_token(spaces):
 	curr_player.board_position = (curr_player.board_position + spaces) % 20
 	curr_player.position = get_node("../Board").get_pos(curr_player.board_position)
-	
+		
 	curr_player.check_corner()
 
 # Called when the node enters the scene tree for the first time.

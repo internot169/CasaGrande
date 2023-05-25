@@ -1,7 +1,7 @@
 extends Node3D
 
-var x
-var y
+var x = 0
+var y = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +19,7 @@ func _unhandled_input(event):
 	
 
 func _process(_delta):
-	var bounds = get_tree().get_root().find_child("GameManager").get_x_y_bound()
+	var bounds = get_node("..").get_node("../GameManager").get_x_y_bound()
 	var x_left_bound = bounds[0]
 	var x_right_bound = bounds[1]
 	var y_left_bound = bounds[2]
@@ -37,3 +37,7 @@ func _process(_delta):
 		
 func display_input_box():
 	pass
+
+func reset():
+	x = 0
+	y = 0
