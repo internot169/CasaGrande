@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3q7fd0edg78"]
+[gd_scene load_steps=5 format=3 uid="uid://b3q7fd0edg78"]
 
 [ext_resource type="Script" path="res://board.gd" id="1_dva3j"]
 [ext_resource type="Texture2D" uid="uid://by0xih05e1by2" path="res://Board.png" id="2_juilx"]
-[ext_resource type="Script" path="res://input_getter.gd" id="3_f3ugf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61btf"]
 albedo_texture = ExtResource("2_juilx")
@@ -19,6 +18,3 @@ transform = Transform3D(49.6266, -2.98023e-08, 2.4835e-21, 1.47899e-06, 0.999999
 material_override = SubResource("StandardMaterial3D_61btf")
 mesh = SubResource("PlaneMesh_ejcem")
 skeleton = NodePath("")
-
-[node name="InputGetter" type="Node3D" parent="."]
-script = ExtResource("3_f3ugf")

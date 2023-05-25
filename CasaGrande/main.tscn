@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd5wj6yu7wrrh"]
+[gd_scene load_steps=10 format=3 uid="uid://cd5wj6yu7wrrh"]
 
 [ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
 [ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
+[ext_resource type="PackedScene" uid="uid://cf5fn7j0bfyom" path="res://highlighterinput.tscn" id="2_6pk4s"]
 [ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
+[ext_resource type="Script" path="res://input_getter.gd" id="4_olnyl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pkaf"]
 
@@ -23,12 +25,20 @@ auto_exposure_enabled = true
 
 [node name="Main" type="Node3D"]
 
+[node name="InputGetter" type="Node3D" parent="."]
+script = ExtResource("4_olnyl")
+
+[node name="Highlighterinput" parent="InputGetter" instance=ExtResource("2_6pk4s")]
+
 [node name="Board" parent="." instance=ExtResource("1_0ml7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 0)
 positions = [NodePath("../Position1"), NodePath("../Position2"), NodePath("../Position3"), NodePath("../Position4"), NodePath("../Position5"), NodePath("../Position6"), NodePath("../Position7"), NodePath("../Position8"), NodePath("../Position9"), NodePath("../Position10"), NodePath("../Position11"), NodePath("../Position12"), NodePath("../Position13"), NodePath("../Position14"), NodePath("../Position15"), NodePath("../Position16"), NodePath("../Position17"), NodePath("../Position18"), NodePath("../Position19"), NodePath("../Position20")]
 
-[node name="TopLeft" type="Node3D" parent="Board"]
-transform = Transform3D(0.999517, 0.0296021, -0.00935947, 0.00819266, 0.039295, 0.999193, 0.183681, -6.1263, 0.239421, 0.184784, 0.619092, -542.028)
+[node name="TopLeft" type="Node3D" parent="."]
+transform = Transform3D(0.999517, 0.0296021, -0.00935947, 0.00819266, 0.039295, 0.999193, 0.0299461, -0.998789, 0.0390335, 0, 0, -88)
+
+[node name="TopRight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -88)
 
 [node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
 players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]
@@ -52,10 +62,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83096, 0.5, -55.3988)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5875, 4.37823, -58.9517)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
-transform = Transform3D(0.999518, 0.0296021, -0.00935947, 0.00819267, 0.039295, 0.999194, 0.029946, -0.998789, 0.0390336, -5.94538, 30.392, -2.1832)
+transform = Transform3D(0.999518, 0.0296021, -0.00935947, 0.00819267, 0.039295, 0.999194, 0.029946, -0.998789, 0.0390336, -5.945, 70, -2.183)
 environment = SubResource("Environment_4gfpa")
 attributes = SubResource("CameraAttributesPractical_tasdl")
-fov = 90.0
+fov = 47.2
 far = 4003.02
 
 [node name="Position1" type="Node3D" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf5fn7j0bfyom"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6hd3j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fv2g"]
+albedo_color = Color(0.65098, 0.65098, 0, 1)
+
+[node name="Highlighterinput" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 4, 0, 4)
+mesh = SubResource("PlaneMesh_6hd3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_1fv2g")
