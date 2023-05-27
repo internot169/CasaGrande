@@ -25,24 +25,6 @@ auto_exposure_enabled = true
 
 [node name="Main" type="Node3D"]
 
-[node name="InputGetter" type="Node3D" parent="."]
-script = ExtResource("4_olnyl")
-
-[node name="Highlighterinput" parent="InputGetter" instance=ExtResource("2_6pk4s")]
-
-[node name="Board" parent="." instance=ExtResource("1_0ml7a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 0)
-positions = [NodePath("../Position1"), NodePath("../Position2"), NodePath("../Position3"), NodePath("../Position4"), NodePath("../Position5"), NodePath("../Position6"), NodePath("../Position7"), NodePath("../Position8"), NodePath("../Position9"), NodePath("../Position10"), NodePath("../Position11"), NodePath("../Position12"), NodePath("../Position13"), NodePath("../Position14"), NodePath("../Position15"), NodePath("../Position16"), NodePath("../Position17"), NodePath("../Position18"), NodePath("../Position19"), NodePath("../Position20")]
-
-[node name="TopLeft" type="Node3D" parent="."]
-transform = Transform3D(0.999517, 0.0296021, -0.00935947, 0.00819266, 0.039295, 0.999193, 0.0299461, -0.998789, 0.0390335, 0, 0, -88)
-
-[node name="TopRight" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -88)
-
-[node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
-players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]
-
 [node name="Token" parent="." instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694714, 1, -85.642)
 new_color = Color(0.239216, 0.635294, 0, 1)
@@ -58,15 +40,25 @@ new_color = Color(0.282353, 0.498039, 1, 1)
 [node name="Token4" parent="." instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83096, 0.5, -55.3988)
 
-[node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5875, 4.37823, -58.9517)
+[node name="InputGetter" type="Node3D" parent="."]
+script = ExtResource("4_olnyl")
 
-[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
-transform = Transform3D(0.999518, 0.0296021, -0.00935947, 0.00819267, 0.039295, 0.999194, 0.029946, -0.998789, 0.0390336, -5.945, 70, -2.183)
+[node name="Highlighterinput" parent="InputGetter" instance=ExtResource("2_6pk4s")]
+transform = Transform3D(0.560021, 0, 0, 0, 1, 0, 0, 0, 0.685211, 0.284887, 1.98725, -76.3548)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.842134, 70, -65.0016)
 environment = SubResource("Environment_4gfpa")
 attributes = SubResource("CameraAttributesPractical_tasdl")
 fov = 47.2
 far = 4003.02
+
+[node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
+players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]
+
+[node name="Board" parent="." instance=ExtResource("1_0ml7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 0)
+positions = [NodePath("../Position1"), NodePath("../Position2"), NodePath("../Position3"), NodePath("../Position4"), NodePath("../Position5"), NodePath("../Position6"), NodePath("../Position7"), NodePath("../Position8"), NodePath("../Position9"), NodePath("../Position10"), NodePath("../Position11"), NodePath("../Position12"), NodePath("../Position13"), NodePath("../Position14"), NodePath("../Position15"), NodePath("../Position16"), NodePath("../Position17"), NodePath("../Position18"), NodePath("../Position19"), NodePath("../Position20")]
 
 [node name="Position1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.58295, 1.12932, -91.3763)

@@ -2,17 +2,19 @@ extends Node3D
 
 enum States {PLAYER_1_TURN, PLAYER_2_TURN, PLAYER_3_TURN, PLAYER_4_TURN, GAME_OVER}
 
-# For testing purposes, start with player 4 to loop back to player 1
-var curstate = States.PLAYER_4_TURN
 var game_ending = false
 var game_ending_index = 0
 
 @export
 var players = []
 var curr_player
+var curstate = States.PLAYER_1_TURN
 var player_text
-
 var can_lay_block = true
+
+func _ready():
+	curr_player = get_node(players[0])
+	player_text = "Player 1: Play"
 
 func _process(delta):
 	$UI.display_player(curr_player, player_text)
@@ -23,7 +25,6 @@ func _process(delta):
 		game_ending_index = 1
 	
 func switch_turn():
-	
 	if (game_ending_index == 4):
 		curstate = States.GAME_OVER
 		return
@@ -77,11 +78,6 @@ func move_token(spaces):
 		
 	curr_player.check_corner()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	switch_turn()
-	turn()
-
 func lay_block(x, y, z):
 	if(can_lay_block):
 		can_lay_block = !get_node("../Board").lay_block(x, y, z)
@@ -90,7 +86,7 @@ func lay_block(x, y, z):
 # -1 if no bound
 func get_x_y_bound():
 	var board_position = curr_player.board_position
-	pass
+
 	if (board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
 		# Corners are an edge case (no pun intended)
 		# Return -1 for all bounds
