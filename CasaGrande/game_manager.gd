@@ -24,6 +24,10 @@ func _process(delta):
 		switch_turn()
 		game_ending_index = 1
 	
+	if (curr_player.check_corner()):
+		# TODO implement better corner checks
+		get_node("UI/Button").visible = true
+
 func switch_turn():
 	get_node("UI/Button").visible = false
 	
@@ -86,7 +90,7 @@ func move_token(spaces):
 func lay_block(x, y, z):
 	if(can_lay_block):
 		can_lay_block = !get_node("../Board").lay_block(x, y, z)
-		get_node("UI/Button").visible = true
+		get_node("UI/Button").visible = !can_lay_block
 
 # Returns an array with [x_left_bound, x_right_bound, y_left_bound, y_right_bound]
 # -1 if no bound

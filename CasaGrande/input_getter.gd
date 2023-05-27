@@ -32,6 +32,8 @@ func get_input():
 	return false
 
 func _process(_delta):
+	get_node("Highlighterinput").visible = get_node("../GameManager").can_lay_block
+	
 	if(!get_node("../GameManager").can_lay_block):
 		return
 	
@@ -47,10 +49,10 @@ func _process(_delta):
 	var check_y = (y_left_bound != -1 && y_right_bound != -1)
 	
 	if check_x:
-		x = ((x - x_left_bound) % (x_right_bound - x_left_bound)) + x_left_bound
+		x = (abs(x - x_left_bound) % (x_right_bound - x_left_bound)) + x_left_bound
 		y %= 8
 	elif check_y:
-		y = ((y - y_left_bound) % (y_right_bound - y_left_bound)) + y_left_bound
+		y = (abs(y - y_left_bound) % (y_right_bound - y_left_bound)) + y_left_bound
 		x %= 8
 	else:
 		x %= 8
