@@ -38,11 +38,3 @@ func _on_movemore_pressed():
 		$Movemore/TextEdit.visible = true
 		$Movemore/TextEdit.text = ""
 	textbox_open = !textbox_open
-
-
-func _on_lay_block_pressed():
-	var x = int($LayBlock/TextEdit.text)
-	var y = int($LayBlock/TextEdit2.text)
-	var z = int($LayBlock/TextEdit3.text)
-	
-	get_node("..").lay_block(x, y, z)

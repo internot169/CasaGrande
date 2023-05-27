@@ -25,6 +25,8 @@ func _process(delta):
 		game_ending_index = 1
 	
 func switch_turn():
+	get_node("UI/Button").visible = false
+	
 	if (game_ending_index == 4):
 		curstate = States.GAME_OVER
 		return
@@ -62,6 +64,9 @@ func turn():
 	move_token(roll_dice())
 	can_lay_block = true
 	
+	if(curr_player.check_corner()):
+		can_lay_block = false
+	
 func roll_dice():
 	# Random logic here
 	var rand = RandomNumberGenerator.new()
@@ -81,6 +86,7 @@ func move_token(spaces):
 func lay_block(x, y, z):
 	if(can_lay_block):
 		can_lay_block = !get_node("../Board").lay_block(x, y, z)
+		get_node("UI/Button").visible = true
 
 # Returns an array with [x_left_bound, x_right_bound, y_left_bound, y_right_bound]
 # -1 if no bound

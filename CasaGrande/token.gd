@@ -7,7 +7,7 @@ var money = 0
 # Start with 26 tokens, CG rules
 var tokens_left = 26
 
-var board_position = 0
+var board_position = 1
 # Bonus position defaults to 5 as per CG rules
 var bonus_position = 5
 
@@ -23,6 +23,8 @@ func _ready():
 func check_corner():
 	if(board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
 		bonus_position += 3
+		return true
+	return false
 
 func _process(delta):
 	if (bonus_position >= 9):

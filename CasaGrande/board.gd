@@ -21,7 +21,9 @@ func lay_block(x, y, z):
 	block.new_color = get_node("../GameManager").curr_player.new_color
 	block.player = get_node("../GameManager").curr_player
 	
-	block.position = Vector3(-x + 4, y + 1, z + 4)
+	var z_amt = -88.5
+	var pos:Vector3 = Vector3((5 * x), z + 0.61, -88.5 + (6 * y))
+	block.position = pos
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
 	
@@ -76,6 +78,3 @@ func _ready():
 			blocks[i].append([])
 			for k in height:
 				blocks[i][j].append(null)
-				
-
-			
