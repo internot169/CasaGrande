@@ -18,9 +18,7 @@ func display_player(p: Player, text):
 	
 	label.text = text
 	label.text += "\nCoins: " + str(p.money)
-	label.text += "\nTokens: " + str(p.tokens_left)
-	label.text += "\nBoard Position: " + str(p.board_position)
-	label.text += "\nBonus Position: " + str(p.bonus_position)
+	label.text += "\nBlocks: " + str(p.tokens_left)
 	
 func _on_button_pressed():
 	get_node("..").switch_turn()

@@ -15,6 +15,9 @@ var can_lay_block = true
 func _ready():
 	curr_player = get_node(players[0])
 	player_text = "Player 1: Play"
+	
+	var curr_color = curr_player.new_color	
+	$UI/Icon.material.set_shader_parameter("color", Plane(curr_color.r, curr_color.g, curr_color.b, curr_color.a))
 
 func _process(delta):
 	$UI.display_player(curr_player, player_text)
@@ -26,7 +29,7 @@ func _process(delta):
 
 
 func switch_turn():
-	get_node("UI/Button").visible = false
+	$UI/Button.visible = false
 	
 	if (game_ending_index == 4):
 		curstate = States.GAME_OVER
@@ -59,6 +62,9 @@ func switch_turn():
 	player_text = text
 	
 	$UI.display_player(curr_player, text)
+	var curr_color = curr_player.new_color
+	$UI/Icon.material.set_shader_parameter("color", Plane(curr_color.r, curr_color.g, curr_color.b, curr_color.a))
+	
 	turn()
 
 func turn():
@@ -67,7 +73,7 @@ func turn():
 	
 	if(curr_player.check_corner()):
 		can_lay_block = false
-		get_node("UI/Button").visible = true
+		$UI/Button.visible = true
 	
 func roll_dice():
 	# Random logic here
@@ -86,7 +92,7 @@ func move_token(spaces):
 func lay_block(x, y, z):
 	if(can_lay_block):
 		can_lay_block = !get_node("../Board").lay_block(x, y, z)
-		get_node("UI/Button").visible = !can_lay_block
+		$UI/Button.visible = !can_lay_block
 
 # Returns an array with [x_left_bound, x_right_bound, y_left_bound, y_right_bound]
 # -1 if no bound
