@@ -18,15 +18,3 @@ transform = Transform3D(49.6266, -2.98023e-08, 2.4835e-21, 1.47899e-06, 0.999999
 material_override = SubResource("StandardMaterial3D_61btf")
 mesh = SubResource("PlaneMesh_ejcem")
 skeleton = NodePath("")
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -541.903)
-
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0, -541.903)
-
-[node name="Node3D4" type="Node3D" parent="."]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0.2, 0, -509.554)
-
-[node name="Node3D3" type="Node3D" parent="."]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 4.7, 0, -509.851)

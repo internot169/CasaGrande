@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd5wj6yu7wrrh"]
+[gd_scene load_steps=11 format=3 uid="uid://cd5wj6yu7wrrh"]
 
 [ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
 [ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
 [ext_resource type="PackedScene" uid="uid://cf5fn7j0bfyom" path="res://highlighterinput.tscn" id="2_6pk4s"]
+[ext_resource type="PackedScene" uid="uid://by24nndr2heas" path="res://token_bonus.tscn" id="2_alhe1"]
 [ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
 [ext_resource type="Script" path="res://input_getter.gd" id="4_olnyl"]
 
@@ -25,20 +26,40 @@ auto_exposure_enabled = true
 
 [node name="Main" type="Node3D"]
 
-[node name="Token" parent="." instance=ExtResource("3_81pnq")]
+[node name="Token" parent="." node_paths=PackedStringArray("bonus_token") instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694714, 1, -85.642)
 new_color = Color(0.239216, 0.635294, 0, 1)
+bonus_token = NodePath("../BonusToken1")
 
-[node name="Token2" parent="." instance=ExtResource("3_81pnq")]
+[node name="Token2" parent="." node_paths=PackedStringArray("bonus_token") instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83096, 0.5, -60.1113)
 new_color = Color(0.670588, 0.505882, 0.0352941, 1)
+bonus_token = NodePath("../BonusToken2")
 
-[node name="Token3" parent="." instance=ExtResource("3_81pnq")]
+[node name="Token3" parent="." node_paths=PackedStringArray("bonus_token") instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.810063, 0.5, -56.3698)
 new_color = Color(0.282353, 0.498039, 1, 1)
+bonus_token = NodePath("../BonusToken3")
 
-[node name="Token4" parent="." instance=ExtResource("3_81pnq")]
+[node name="Token4" parent="." node_paths=PackedStringArray("bonus_token") instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83096, 0.5, -55.3988)
+bonus_token = NodePath("../BonusToken4")
+
+[node name="BonusToken1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_alhe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.7906)
+player = NodePath("../Token")
+
+[node name="BonusToken2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_alhe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.7906)
+player = NodePath("../Token2")
+
+[node name="BonusToken3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_alhe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.7906)
+player = NodePath("../Token3")
+
+[node name="BonusToken4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_alhe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.7906)
+player = NodePath("../Token4")
 
 [node name="InputGetter" type="Node3D" parent="."]
 script = ExtResource("4_olnyl")
@@ -58,64 +79,97 @@ players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), N
 
 [node name="Board" parent="." instance=ExtResource("1_0ml7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.163033, 0, 0, 0)
-positions = [NodePath("../Position1"), NodePath("../Position2"), NodePath("../Position3"), NodePath("../Position4"), NodePath("../Position5"), NodePath("../Position6"), NodePath("../Position7"), NodePath("../Position8"), NodePath("../Position9"), NodePath("../Position10"), NodePath("../Position11"), NodePath("../Position12"), NodePath("../Position13"), NodePath("../Position14"), NodePath("../Position15"), NodePath("../Position16"), NodePath("../Position17"), NodePath("../Position18"), NodePath("../Position19"), NodePath("../Position20")]
+positions = [NodePath("../Positions/Position1"), NodePath("../Positions/Position2"), NodePath("../Positions/Position3"), NodePath("../Positions/Position4"), NodePath("../Positions/Position5"), NodePath("../Positions/Position6"), NodePath("../Positions/Position7"), NodePath("../Positions/Position8"), NodePath("../Positions/Position9"), NodePath("../Positions/Position10"), NodePath("../Positions/Position11"), NodePath("../Positions/Position12"), NodePath("../Positions/Position13"), NodePath("../Positions/Position14"), NodePath("../Positions/Position15"), NodePath("../Positions/Position16"), NodePath("../Positions/Position17"), NodePath("../Positions/Position18"), NodePath("../Positions/Position19"), NodePath("../Positions/Position20")]
+bonus_positions = [NodePath("../BonusPositions/BonusPosition1"), NodePath("../BonusPositions/BonusPosition2"), NodePath("../BonusPositions/BonusPosition3"), NodePath("../BonusPositions/BonusPosition4"), NodePath("../BonusPositions/BonusPosition5"), NodePath("../BonusPositions/BonusPosition6"), NodePath("../BonusPositions/BonusPosition7"), NodePath("../BonusPositions/BonusPosition8"), NodePath("../BonusPositions/BonusPosition9")]
 
-[node name="Position1" type="Node3D" parent="."]
+[node name="Positions" type="Node3D" parent="."]
+
+[node name="Position1" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.58295, 1.12932, -91.3763)
 
-[node name="Position2" type="Node3D" parent="."]
+[node name="Position2" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 4.72307, 1.2, -91.0372)
 
-[node name="Position3" type="Node3D" parent="."]
+[node name="Position3" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 14.7547, 1.2, -91.048)
 
-[node name="Position4" type="Node3D" parent="."]
+[node name="Position4" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 24.2297, 1.2, -91.4568)
 
-[node name="Position5" type="Node3D" parent="."]
+[node name="Position5" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 34.7339, 1.2, -91.0744)
 
-[node name="Position6" type="Node3D" parent="."]
+[node name="Position6" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.2943, 1.2, -91.251)
 
-[node name="Position7" type="Node3D" parent="."]
+[node name="Position7" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.399, 1.2, -82.2358)
 
-[node name="Position8" type="Node3D" parent="."]
+[node name="Position8" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.2482, 1.2, -70.4327)
 
-[node name="Position9" type="Node3D" parent="."]
+[node name="Position9" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.3085, 1.2, -58.8087)
 
-[node name="Position10" type="Node3D" parent="."]
+[node name="Position10" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.5779, 1.2, -46.0107)
 
-[node name="Position11" type="Node3D" parent="."]
+[node name="Position11" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 42.1978, 1.2, -36.6696)
 
-[node name="Position12" type="Node3D" parent="."]
+[node name="Position12" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 34.2139, 1.2, -36.3505)
 
-[node name="Position13" type="Node3D" parent="."]
+[node name="Position13" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 24.5469, 1.2, -36.1242)
 
-[node name="Position14" type="Node3D" parent="."]
+[node name="Position14" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 14.5185, 1.2, -36.3656)
 
-[node name="Position15" type="Node3D" parent="."]
+[node name="Position15" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, 4.44717, 1.2, -36.2596)
 
-[node name="Position16" type="Node3D" parent="."]
+[node name="Position16" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.27694, 1.2, -37.8056)
 
-[node name="Position17" type="Node3D" parent="."]
+[node name="Position17" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.55586, 1.2, -47.1058)
 
-[node name="Position18" type="Node3D" parent="."]
+[node name="Position18" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.70147, 1.2, -60.2185)
 
-[node name="Position19" type="Node3D" parent="."]
+[node name="Position19" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -2.34052, 1.2, -69.8775)
 
-[node name="Position20" type="Node3D" parent="."]
+[node name="Position20" type="Node3D" parent="Positions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.111002, -1.88051, 1.2, -82.141)
+
+[node name="BonusPositions" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+
+[node name="BonusPosition1" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -43.2824)
+
+[node name="BonusPosition2" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -49.6161)
+
+[node name="BonusPosition3" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -56.1604)
+
+[node name="BonusPosition4" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -62.7817)
+
+[node name="BonusPosition5" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -67.5039)
+
+[node name="BonusPosition6" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -73.1292)
+
+[node name="BonusPosition7" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -79.4973)
+
+[node name="BonusPosition8" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -84.991)
+
+[node name="BonusPosition9" type="Node3D" parent="BonusPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.6695)

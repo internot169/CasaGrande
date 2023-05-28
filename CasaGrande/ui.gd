@@ -31,8 +31,11 @@ func _ready():
 func _on_movemore_pressed():
 	if(textbox_open):
 		var amount = int($Movemore/TextEdit.text)
+		
 		get_node("..").move_token(amount)
 		get_node("..").curr_player.bonus_position -= amount
+		get_node("..").curr_player.bonus_token.move_bonus()
+				
 		$Movemore/TextEdit.visible = false
 	else:
 		$Movemore/TextEdit.visible = true

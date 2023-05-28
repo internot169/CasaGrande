@@ -23,10 +23,7 @@ func _process(delta):
 		game_ending = true
 		switch_turn()
 		game_ending_index = 1
-	
-	if (curr_player.check_corner()):
-		# TODO implement better corner checks
-		get_node("UI/Button").visible = true
+
 
 func switch_turn():
 	get_node("UI/Button").visible = false
@@ -70,6 +67,7 @@ func turn():
 	
 	if(curr_player.check_corner()):
 		can_lay_block = false
+		get_node("UI/Button").visible = true
 	
 func roll_dice():
 	# Random logic here
@@ -84,8 +82,6 @@ func roll_dice():
 func move_token(spaces):
 	curr_player.board_position = (curr_player.board_position + spaces) % 20
 	curr_player.position = get_node("../Board").get_pos(curr_player.board_position)
-		
-	curr_player.check_corner()
 
 func lay_block(x, y, z):
 	if(can_lay_block):

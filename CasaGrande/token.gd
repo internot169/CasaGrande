@@ -11,6 +11,9 @@ var board_position = 1
 # Bonus position defaults to 5 as per CG rules
 var bonus_position = 5
 
+@export
+var bonus_token:Bonus
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MeshInstance3D.get_active_material(0)
@@ -23,10 +26,12 @@ func _ready():
 func check_corner():
 	if(board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):
 		bonus_position += 3
+		bonus_token.move_bonus()
+		
 		return true
 	return false
 
 func _process(delta):
 	if (bonus_position >= 9):
 		money += 9
-	bonus_position = 0
+		bonus_position = 0

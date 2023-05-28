@@ -2,6 +2,8 @@ extends Node3D
 
 @export
 var positions = []
+@export
+var bonus_positions = []
 
 var blocks = [[[]]]
 var width = 8
@@ -10,6 +12,9 @@ var length = 8
 
 func get_pos(id):
 	return get_node(positions[id]).position
+
+func get_bonus_pos(id):
+	return get_node(bonus_positions[id]).position
 
 func lay_block(x, y, z):
 	if(blocks[x][y][z] != null):
@@ -39,25 +44,26 @@ func lay_platform(x, y, z):
 	if(x >= 3):
 		if(compare(blocks[x][y][z], blocks[x-3][y][z])):
 			will_lay = true
-			rot = (PI / 2)
+			rot = -(PI / 2)
 	elif(x <= width - 3):
 		if(compare(blocks[x][y][z], blocks[x+3][y][z])):
 			will_lay = true
-			rot = -(PI / 2)
+			rot = (PI / 2)
 	elif(y >= 3):
 		if(compare(blocks[x][y][z], blocks[x][y-3][z])):
 			will_lay = true
-			rot = 0
+			rot = (PI)
 	elif(y <= width - 3):
 		if(compare(blocks[x][y][z], blocks[x][y+3][z])):
 			will_lay = true
-			rot = (PI)
+			rot = (0)
 	
 	if (will_lay):
+		print("laying")
 		var platform = load("res://platform.tscn").instantiate()
 		get_tree().get_root().add_child(platform)
 	
-		platform.position = blocks[x][y][z].position
+		platform.position = Vector3(blocks[x][y][z].position.x + 2, 4.5, blocks[x][y][z].position.z + 3)
 		platform.transform.basis = platform.transform.basis.rotated(Vector3(0, 1, 0), rot)
 	
 	return will_lay

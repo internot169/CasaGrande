@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://by24nndr2heas"]
+
+[ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="1_8djqt"]
+[ext_resource type="Script" path="res://token_bonus.gd" id="2_sr0wm"]
+
+[node name="Token_bonus" instance=ExtResource("1_8djqt")]
+script = ExtResource("2_sr0wm")
