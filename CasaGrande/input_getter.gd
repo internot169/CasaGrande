@@ -32,14 +32,14 @@ func get_input():
 	return false
 
 func _process(_delta):
-	get_node("Highlighterinput").visible = get_node("../GameManager").can_lay_block
+	get_node("Highlighterinput").visible = get_node("..").can_lay_block
 	
-	if(!get_node("../GameManager").can_lay_block):
+	if(!get_node("..").can_lay_block):
 		return
 	
 	var lay = await get_input()
 		
-	var bounds = get_node("../GameManager").get_x_y_bound()
+	var bounds = get_node("..").get_x_y_bound()
 	var x_left_bound = bounds[0]
 	var x_right_bound = bounds[1]
 	var y_left_bound = bounds[2]
@@ -64,7 +64,8 @@ func _process(_delta):
 		y = 0
 	
 	if(lay):
-		get_node("../GameManager").lay_block(x, y, 0)
+		# TODO: make this stackable
+		get_node("..").lay_block(x, y, 0)
 	
 	display_input_box()
 
@@ -76,4 +77,4 @@ func display_input_box():
 	var x_amt = 0
 	var pos:Vector3 = Vector3(x_amt + (5 * x), 0.61, z_amt + (6 * y))
 	
-	get_node("Highlighterinput").position = pos
+	$Highlighterinput.position = pos

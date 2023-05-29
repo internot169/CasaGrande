@@ -39,3 +39,13 @@ func _on_movemore_pressed():
 		$Movemore/TextEdit.visible = true
 		$Movemore/TextEdit.text = ""
 	textbox_open = !textbox_open
+
+func _on_lay_platform_pressed():
+	get_node("../RaycastHandler").start_clicking()
+	$EndPlatform.visible = true
+	$LayPlatform.visible = false
+	
+func _on_end_platform_pressed():
+	get_node("../RaycastHandler").stop_clicking()
+	$EndPlatform.visible = false
+	$LayPlatform.visible = true

@@ -21,10 +21,15 @@ func lay_block(x, y, z):
 		return false
 	
 	var block = load("res://block.tscn").instantiate()
+	
 	get_tree().get_root().add_child(block)
 	blocks[x][y][z] = block
+	
 	block.new_color = get_node("../GameManager").curr_player.new_color
 	block.player = get_node("../GameManager").curr_player
+	block.x = x
+	block.y = y
+	block.z = z
 	
 	var z_amt = -88.5
 	var pos:Vector3 = Vector3((5 * x), z + 0.61, -88.5 + (6 * y))
@@ -36,7 +41,7 @@ func lay_block(x, y, z):
 		get_node("../GameManager").curr_player.money += 3
 	
 	return true
-	
+
 func lay_platform(x, y, z):
 	var will_lay = false
 	var rot
@@ -67,6 +72,9 @@ func lay_platform(x, y, z):
 		platform.transform.basis = platform.transform.basis.rotated(Vector3(0, 1, 0), rot)
 	
 	return will_lay
+
+func platform(x_1, y_1, z_1, x_2, y_2, z_2):
+	print("got it!")
 
 func compare(x, y):
 	if(x == null || y == null):

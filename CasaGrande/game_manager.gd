@@ -27,8 +27,7 @@ func _process(delta):
 		switch_turn()
 		game_ending_index = 1
 
-
-func switch_turn():
+func switch_turn():	
 	$UI/Button.visible = false
 	
 	if (game_ending_index == 4):
@@ -119,3 +118,5 @@ func get_x_y_bound():
 		return [-1, -1, 4, 6]
 	elif (board_position == 9 || board_position == 16):
 		return [-1, -1, 6, 8]
+	
+

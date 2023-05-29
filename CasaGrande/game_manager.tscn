@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cax20q47epvn6"]
+[gd_scene load_steps=6 format=3 uid="uid://cax20q47epvn6"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_n8qkr"]
 [ext_resource type="PackedScene" uid="uid://cxud4apv37bp4" path="res://ui.tscn" id="2_ls8pe"]
+[ext_resource type="Script" path="res://raycast_handler.gd" id="3_f0f5c"]
+[ext_resource type="Script" path="res://input_getter.gd" id="4_8bsvw"]
+[ext_resource type="PackedScene" uid="uid://cf5fn7j0bfyom" path="res://highlighterinput.tscn" id="5_3j3dg"]
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_n8qkr")
 
 [node name="UI" parent="." instance=ExtResource("2_ls8pe")]
+
+[node name="RaycastHandler" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_f0f5c")
+
+[node name="InputGetter" type="Node3D" parent="."]
+script = ExtResource("4_8bsvw")
+
+[node name="Highlighterinput" parent="InputGetter" instance=ExtResource("5_3j3dg")]
+transform = Transform3D(0.560021, 0, 0, 0, 1, 0, 0, 0, 0.685211, 0.284887, 1.98725, -76.3548)
