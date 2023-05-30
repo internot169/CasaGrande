@@ -12,5 +12,4 @@ func _ready():
 	move_bonus()
 	
 func move_bonus():
-	print(player.bonus_position - 1)
 	position = get_node("../Board").get_bonus_pos(player.bonus_position - 1)

@@ -37,8 +37,8 @@ func lay_block(x, y, z):
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
 	
-	if(lay_platform(x,y,z)):
-		get_node("../GameManager").curr_player.money += 3
+	# if(lay_platform(x,y,z)):
+	#	get_node("../GameManager").curr_player.money += 3
 	
 	return true
 
@@ -73,8 +73,67 @@ func lay_platform(x, y, z):
 	
 	return will_lay
 
-func platform(x_1, y_1, z_1, x_2, y_2, z_2):
-	print("got it!")
+func platform(x_1, y_1, z_1, x_2, y_2, z_2):	
+	if (z_1 != z_2):
+		print("z values different")
+		return -1
+	elif (x_1 == x_2 && y_1 == y_2):
+		print("its the same thing!")
+		return -1
+	elif (blocks[x_1][y_1][z_1].platform || blocks[x_2][y_2][z_2].platform):
+		print("already platform")
+		return -1
+	else:
+		# NOTE: No absolute value because range can and should go negative
+		if (x_1 == x_2):
+			# iterate through between the two x values and set all to unavailable
+			# instantiate platform, return length
+			# make sure to check for length (3,4,5)
+			var size = y_2 - y_1
+			if (size == 2 || size == 3 || size == 4):
+				for i in range(size):
+					pass
+					#TODO: make it so that everything is an empty space
+					# blocks[x_1][i][z_1].available = false
+					# blocks[x_1][i][z_1 + 1].available = true
+					# TODO: enable the multilayer stacking
+				blocks[x_1][y_1][z_1].platform = true
+				blocks[x_2][y_2][z_2].platform = true
+				return size
+			else:
+				return -1
+		elif (y_1 == y_2):
+			# iterate through between the two y values and set all to unavailable
+			# instantiate platform, return length
+			# make sure to check for length (3,4,5)
+			var size = x_2 - x_1
+			if (size == 2 || size == 3 || size == 4):
+				for i in range(size):
+					pass
+					#TODO: make it so that everything is an empty space
+					# blocks[i][y_1][z_1].available = false
+					# blocks[i][y_1][z_1 + 1].available = true
+					# TODO: enable the multilayer stacking
+				blocks[x_1][y_1][z_1].platform = true
+				blocks[x_2][y_2][z_2].platform = true
+				return size
+			pass
+		else:
+			# Both are unequal, this is an edge piece
+			# Count both side lengths
+			# if correct, return the total sum of lengths
+			# Check if the corner has the thing too
+			var x_size = x_2 - x_1
+			var y_size = y_2 - y_1
+			
+			# Check the top
+			
+			
+			# then check the bottom
+			pass
+
+func claim(x, y, z):
+	pass
 
 func compare(x, y):
 	if(x == null || y == null):

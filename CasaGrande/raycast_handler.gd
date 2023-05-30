@@ -14,9 +14,19 @@ func handle_block(block:Block):
 			click_count += 1
 		elif(click_count == 1):
 			second_block = block
-			stop_clicking()
-		
-			get_node("..").get_node("../Board").platform(first_block.x, first_block.y, first_block.z, second_block.x, second_block.y, second_block.z)
+			
+			if(first_block.player == second_block.player):
+				var worked = get_node("..").get_node("../Board").platform(first_block.x, first_block.y, first_block.z, second_block.x, second_block.y, second_block.z)
+				if worked != -1:
+					print("worked")
+					print(worked)
+				else:
+					print("platform impossible")
+			else:
+				print("aren't compatible")
+			
+			# Turns off the clicking and terminates UI as well
+			get_node("../UI")._on_end_platform_pressed()
 		
 		
 func _physics_process(delta):
@@ -34,7 +44,7 @@ func _physics_process(delta):
 		var output = space_state.intersect_ray(query)
 		
 		if output != null:
-			if output != {} and output["collider"].is_in_group("Bxlock"):
+			if output != {} and output["collider"].is_in_group("Block"):
 				handle_block(output["collider"].get_node(".."))
 			
 
