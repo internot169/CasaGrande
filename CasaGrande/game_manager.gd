@@ -27,7 +27,8 @@ func _process(delta):
 		switch_turn()
 		game_ending_index = 1
 
-func switch_turn():	
+func switch_turn():
+	curr_player.check_corner()
 	$UI/Button.visible = false
 	
 	if (game_ending_index == 4):
@@ -70,7 +71,8 @@ func turn():
 	move_token(roll_dice())
 	can_lay_block = true
 	
-	if(curr_player.check_corner()):
+	var corner = curr_player.board_position == 0 || curr_player.board_position == 5 || curr_player.board_position == 10 || curr_player.board_position == 15
+	if(corner):
 		can_lay_block = false
 		$UI/Button.visible = true
 	
