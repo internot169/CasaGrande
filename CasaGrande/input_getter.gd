@@ -63,19 +63,21 @@ func _process(_delta):
 	if y < 0:
 		y = 0
 	
-	if(lay):
-		# TODO: make this stackable
-		# Make a method called get_available_z
-		get_node("..").lay_block(x, y, 0)
+	var z = get_node("..").get_node("../Board").next_available_z(x, y)
+	print(z)
 	
-	display_input_box()
+	if(lay):
+		if (z != -1):
+			get_node("..").lay_block(x, y, z)
+	
+	display_input_box(z)
 
-func display_input_box():
+func display_input_box(z):
 	# Each box is width five and height 5
 	# Means position of display starts at 2.5 and increases by 5
 	# x starts at 0, z starts at -88
 	var z_amt = -88.5
 	var x_amt = 0
-	var pos:Vector3 = Vector3(x_amt + (5 * x), 0.61, z_amt + (6 * y))
+	var pos:Vector3 = Vector3(x_amt + (5 * x), 0.61 + (3 * z), z_amt + (6 * y))
 	
 	$Highlighterinput.position = pos

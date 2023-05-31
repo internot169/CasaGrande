@@ -34,7 +34,7 @@ func lay_block(x, y, z):
 	block.y = y
 	block.z = z
 	
-	var pos:Vector3 = Vector3((5 * x), z + 0.61, -88.5 + (6 * y))
+	var pos:Vector3 = Vector3((5 * x), (5 * z) + 0.61, -88.5 + (6 * y))
 	block.position = pos
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
@@ -65,7 +65,7 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			if (size == 2 || size == 3 || size == 4):
 				# will never be zero due to other checks
 				var dir_of_num = (y_2 - y_1) / abs(y_2 - y_1)
-				for i in range(y_1 + dir_of_num, y_2):
+				for i in range(y_1 + dir_of_num, y_2, dir_of_num):
 					if (blocks[x_1][i][z_1].block != null):
 						# undo it all
 						for j in range(y_2, i, 1):
@@ -75,8 +75,8 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 						return -1
 					else:
 						claim(blocks[x_1][i][z_1], x_1, i, z_1)
-						if (z_1 != height - 1):
-							blocks[x_1][i][z_1 + 1].available = true
+						print(z_1)
+						print(height - 1)
 					#TODO: make it so that everything is an empty space
 					#TODO: enable the multilayer stacking
 				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
@@ -91,7 +91,7 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			var size = abs(x_2 - x_1)
 			if (size == 2 || size == 3 || size == 4):
 				var dir_of_num = (x_2-x_1) / abs(x_2-x_1)
-				for i in range(x_1 + dir_of_num, x_2):
+				for i in range(x_1 + dir_of_num, x_2, dir_of_num):
 					if (blocks[i][y_1][z_1].block != null):
 						# undo it all
 						for j in range(y_1, i, 1):
@@ -101,8 +101,8 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 						return -1
 					else:
 						claim(blocks[i][y_1][z_1], i, y_1, z_1)
-						if (z_1 != height - 1):
-							blocks[x_1][i][z_1 + 1].available = true
+						print(z_1)
+						print(height - 1)
 					#TODO: make it so that everything is an empty space
 					#TODO: enable the multilayer stacking
 				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
@@ -131,19 +131,31 @@ func claim(space, x, y, z):
 	space.available = false
 	
 	var plat = load("res://platform.tscn").instantiate()
-	get_tree().get_root().add_child(plat)
 	space.platform_obj = plat
-	print("I loaded the thing")
+	get_tree().get_root().add_child(plat)
 	
-	plat.position = Vector3((5 * x) + 2.5, z + 3.11, -86 + (6 * y))
-	# TODO: implement color handling
-	# instantiate platform here
+	if (z != height - 1):
+		blocks[x][y][z + 1].available = true
+	
+	plat.position = Vector3((5 * x) + 2.5, (3 * z) + 3.11, -86 + (6 * y))
 
 func unclaim(space):
 	space.platform = false
 	space.available = true
+	
 	if(space.platform_obj != null):
 		space.platform_obj.queue_free()
+
+func next_available_z(x, y):
+	for z in range(height):
+		if z == 0:
+			if blocks[x][y][z].available:
+				return z
+		else:
+			if (blocks[x][y][z].available || blocks[x][y][z-1].platform):
+				return z
+	return -1
+
 	
 func compare(x, y):
 	if(x == null || y == null):
@@ -161,9 +173,8 @@ func _ready():
 			blocks[i].append([])
 			for k in height:
 				blocks[i][j].append(Space.new())
-				if (j == 0 || k == 0):
+				if (k == 0):
 					blocks[i][j][k].available = true
-	# Hardcoded removes for default initializations
-	blocks[0][0].remove_at(3)
+	# Hardcoded for default initializations
 	blocks[0].remove_at(8)
-	print(blocks)
+	blocks.remove_at(8)

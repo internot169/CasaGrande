@@ -18,7 +18,7 @@ func handle_block(block:Block):
 			if(first_block.player == second_block.player):
 				var worked = get_node("..").get_node("../Board").platform(first_block.x, first_block.y, first_block.z, second_block.x, second_block.y, second_block.z)
 				if worked != -1:
-					pass
+					print("It worked yay")
 			
 			# Turns off the clicking and terminates UI as well
 			get_node("../UI")._on_end_platform_pressed()
