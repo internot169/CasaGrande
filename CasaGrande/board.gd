@@ -34,7 +34,6 @@ func lay_block(x, y, z):
 	block.y = y
 	block.z = z
 	
-	var z_amt = -88.5
 	var pos:Vector3 = Vector3((5 * x), z + 0.61, -88.5 + (6 * y))
 	block.position = pos
 	
@@ -67,32 +66,27 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			# iterate through between the two x values and set all to unavailable
 			# instantiate platform, return length
 			# make sure to check for length (3,4,5)
-			var size = y_2 - y_1
+			var size = abs(y_2 - y_1)
 			if (size == 2 || size == 3 || size == 4):
-				var dir_of_num
-				if ((y_1-y_2) == 0):
-					dir_of_num = 1
-				else:
-					dir_of_num = (y_1 - y_2) / abs(y_1 - y_2)
-				print(dir_of_num)
+				# will never be zero due to other checks
+				var dir_of_num = (y_2 - y_1) / abs(y_2 - y_1)
 				for i in range(y_1 + dir_of_num, y_2):
-					if (blocks[x_1][i][z_1] != null):
+					if (blocks[x_1][i][z_1].block != null):
 						# undo it all
 						for j in range(y_2, i, 1):
 							unclaim(blocks[x_1][i][z_1])
 							
 							if (z_1 != height - 1):
 								blocks[x_1][i][z_1 + 1].available = false
-						print("Thing in way")
 						return -1
 					else:
 						claim(blocks[x_1][i][z_1], x_1, i, z_1)
-					
 						if (z_1 != height - 1):
 							blocks[x_1][i][z_1 + 1].available = true
 					#TODO: make it so that everything is an empty space
 					#TODO: enable the multilayer stacking
-				
+				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
+				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
 				return size
 			else:
 				print("Size is wrong")
@@ -101,14 +95,9 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			# iterate through between the two y values and set all to unavailable
 			# instantiate platform, return length
 			# make sure to check for length (3,4,5)
-			var size = x_2 - x_1
+			var size = abs(x_2 - x_1)
 			if (size == 2 || size == 3 || size == 4):
-				var dir_of_num
-				if ((x_1 - x_2) == 0):
-					dir_of_num = 1
-				else:
-					dir_of_num = (x_1-x_2) / abs(x_1-x_2)
-				print(dir_of_num)
+				var dir_of_num = (x_2-x_1) / abs(x_2-x_1)
 				for i in range(x_1 + dir_of_num, x_2):
 					if (blocks[i][y_1][z_1].block != null):
 						# undo it all
@@ -116,16 +105,15 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 							unclaim(blocks[i][y_1][z_1])
 							if (z_1 != height - 1):
 								blocks[x_1][i][z_1 + 1].available = false
-						
-						print("Thing in way")
 						return -1
 					else:
 						claim(blocks[i][y_1][z_1], i, y_1, z_1)
-						print("This is working")
 						if (z_1 != height - 1):
 							blocks[x_1][i][z_1 + 1].available = true
 					#TODO: make it so that everything is an empty space
-					#TODO: enable the multilayer stacking				
+					#TODO: enable the multilayer stacking
+				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
+				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
 				return size
 			else:
 				print("size is wrong")
@@ -156,7 +144,7 @@ func claim(space, x, y, z):
 	space.platform_obj = plat
 	print("I loaded the thing")
 	
-	plat.position = Vector3((5 * x), z + 3.11, -88.5 + (6 * y))
+	plat.position = Vector3((5 * x) + 2.5, z + 3.11, -86 + (6 * y))
 	# TODO: implement color handling
 	# instantiate platform here
 	pass
@@ -164,7 +152,8 @@ func claim(space, x, y, z):
 func unclaim(space):
 	space.platform = false
 	space.available = true
-	space.platform_obj.queue_free()
+	if(space.platform_obj != null):
+		space.platform_obj.queue_free()
 	
 func compare(x, y):
 	if(x == null || y == null):
@@ -184,4 +173,7 @@ func _ready():
 				blocks[i][j].append(Space.new())
 				if (j == 0 || k == 0):
 					blocks[i][j][k].available = true
+	# Hardcoded removes for default initializations
+	blocks[0][0].remove_at(3)
+	blocks[0].remove_at(8)
 	print(blocks)
