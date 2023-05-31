@@ -1,7 +1,6 @@
 class_name Block extends Node
 
 var new_color
-var platform = false
 var player
 
 var x
