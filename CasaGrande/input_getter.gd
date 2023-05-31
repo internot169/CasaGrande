@@ -65,6 +65,7 @@ func _process(_delta):
 	
 	if(lay):
 		# TODO: make this stackable
+		# Make a method called get_available_z
 		get_node("..").lay_block(x, y, 0)
 	
 	display_input_box()

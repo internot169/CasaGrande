@@ -3,19 +3,8 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_y780r"]
 
 [node name="Platform" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45256, 0, 2.59406)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.4, 0, 0, 0, 1, 0, 0, 0, 2.6, 0, 0, 0)
-mesh = SubResource("PlaneMesh_y780r")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 1, 0, 0, 0, 2.6, 0, 0, 5.23549)
-mesh = SubResource("PlaneMesh_y780r")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 1, 0, 0, 0, 2.6, 0, 0, 10.5242)
-mesh = SubResource("PlaneMesh_y780r")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 1, 0, 0, 0, 2.6, 0, 0, 15.8069)
 mesh = SubResource("PlaneMesh_y780r")
