@@ -27,6 +27,7 @@ func lay_block(x, y, z):
 	get_tree().get_root().add_child(block)
 	blocks[x][y][z].block = block
 	blocks[x][y][z].available = false
+	blocks[x][y][z].platform = false
 	
 	block.new_color = get_node("../GameManager").curr_player.new_color
 	block.player = get_node("../GameManager").curr_player
@@ -44,7 +45,7 @@ func lay_block(x, y, z):
 	
 	return true
 
-func platform(x_1, y_1, z_1, x_2, y_2, z_2):	
+func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 	if (x_1 >= width || y_1 >= length || z_1 >= height || x_2 >= width || y_2 >= length || z_2 >= height):
 		return -1	
 	if (z_1 != z_2):
@@ -75,13 +76,11 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 						return -1
 					else:
 						claim(blocks[x_1][i][z_1], x_1, i, z_1)
-						print(z_1)
-						print(height - 1)
 					#TODO: make it so that everything is an empty space
 					#TODO: enable the multilayer stacking
 				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
 				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
-				return size
+				return (size + 1) * (z_1 + 1)
 			else:
 				return -1
 		elif (y_1 == y_2):
@@ -101,13 +100,11 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 						return -1
 					else:
 						claim(blocks[i][y_1][z_1], i, y_1, z_1)
-						print(z_1)
-						print(height - 1)
 					#TODO: make it so that everything is an empty space
 					#TODO: enable the multilayer stacking
 				claim(blocks[x_1][y_1][z_1], x_1, y_1, z_1)
 				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
-				return size
+				return (size + 1) * (z_1 + 1)
 			else:
 				return -1
 		else:
@@ -137,7 +134,7 @@ func claim(space, x, y, z):
 	if (z != height - 1):
 		blocks[x][y][z + 1].available = true
 	
-	plat.position = Vector3((5 * x) + 2.5, (3 * z) + 3.11, -86 + (6 * y))
+	plat.position = Vector3((5 * x) + 2.5, (5 * z) + 3.11, -86 + (6 * y))
 
 func unclaim(space):
 	space.platform = false
@@ -152,7 +149,7 @@ func next_available_z(x, y):
 			if blocks[x][y][z].available:
 				return z
 		else:
-			if (blocks[x][y][z].available || blocks[x][y][z-1].platform):
+			if (blocks[x][y][z].available && blocks[x][y][z-1].platform):
 				return z
 	return -1
 
