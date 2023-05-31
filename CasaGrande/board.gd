@@ -46,19 +46,14 @@ func lay_block(x, y, z):
 
 func platform(x_1, y_1, z_1, x_2, y_2, z_2):	
 	if (x_1 >= width || y_1 >= length || z_1 >= height || x_2 >= width || y_2 >= length || z_2 >= height):
-		print("Out of bounds")
 		return -1	
 	if (z_1 != z_2):
-		print("z values different")
 		return -1
 	elif (x_1 == x_2 && y_1 == y_2):
-		print("its the same thing!")
 		return -1
 	elif (blocks[x_1][y_1][z_1].platform || blocks[x_2][y_2][z_2].platform):
-		print("already platform")
 		return -1
 	elif (blocks[x_1][y_1][z_1].block == null || blocks[x_2][y_2][z_2].block == null):
-		print("No block")
 		return -1
 	else:
 		# NOTE: No absolute value because range can and should go negative
@@ -75,7 +70,6 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 						# undo it all
 						for j in range(y_2, i, 1):
 							unclaim(blocks[x_1][i][z_1])
-							
 							if (z_1 != height - 1):
 								blocks[x_1][i][z_1 + 1].available = false
 						return -1
@@ -89,7 +83,6 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
 				return size
 			else:
-				print("Size is wrong")
 				return -1
 		elif (y_1 == y_2):
 			# iterate through between the two y values and set all to unavailable
@@ -116,7 +109,6 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 				claim(blocks[x_2][y_2][z_2], x_2, y_2, z_2)
 				return size
 			else:
-				print("size is wrong")
 				return -1
 		else:
 			print("Not handling turn cases as of now")
@@ -125,15 +117,14 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			# Count both side lengths
 			# if correct, return the total sum of lengths
 			# Check if the corner has the thing too
-			# var x_size = x_2 - x_1
-			# var y_size = y_2 - y_1
+			# var x_size = abs(x_2 - x_1)
+			# var y_size = abs(y_2 - y_1)
 			
 			# Check the top
 			# if (x_size == 2 || x_size == 3):
 			# 	pass
 			
 			# then check the side
-			# pass
 
 func claim(space, x, y, z):
 	space.platform = true
@@ -147,7 +138,6 @@ func claim(space, x, y, z):
 	plat.position = Vector3((5 * x) + 2.5, z + 3.11, -86 + (6 * y))
 	# TODO: implement color handling
 	# instantiate platform here
-	pass
 
 func unclaim(space):
 	space.platform = false
