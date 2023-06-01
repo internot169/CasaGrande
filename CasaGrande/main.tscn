@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd5wj6yu7wrrh"]
+[gd_scene load_steps=10 format=3 uid="uid://cd5wj6yu7wrrh"]
 
 [ext_resource type="PackedScene" uid="uid://b3q7fd0edg78" path="res://board.tscn" id="1_0ml7a"]
 [ext_resource type="PackedScene" uid="uid://cax20q47epvn6" path="res://game_manager.tscn" id="2_0ab3p"]
 [ext_resource type="PackedScene" uid="uid://by24nndr2heas" path="res://token_bonus.tscn" id="2_alhe1"]
 [ext_resource type="PackedScene" uid="uid://c6qhal3k06as3" path="res://token.tscn" id="3_81pnq"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="3_ayktx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pkaf"]
 
@@ -23,6 +24,9 @@ exposure_multiplier = 3.0
 auto_exposure_enabled = true
 
 [node name="Main" type="Node3D"]
+
+[node name="CameraLookPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -68.1441)
 
 [node name="Token" parent="." node_paths=PackedStringArray("bonus_token") instance=ExtResource("3_81pnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694714, 1, -85.642)
@@ -59,12 +63,15 @@ player = NodePath("../Token3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9573, 0, -89.7906)
 player = NodePath("../Token4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_look_pos")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.2822, 74.098, -63.2788)
 environment = SubResource("Environment_4gfpa")
 attributes = SubResource("CameraAttributesPractical_tasdl")
+current = true
 fov = 47.2
 far = 4003.02
+script = ExtResource("3_ayktx")
+cam_look_pos = NodePath("../CameraLookPos")
 
 [node name="GameManager" parent="." instance=ExtResource("2_0ab3p")]
 players = [NodePath("../Token"), NodePath("../Token2"), NodePath("../Token3"), NodePath("../Token4")]

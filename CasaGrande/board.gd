@@ -35,7 +35,7 @@ func lay_block(x, y, z):
 	block.y = y
 	block.z = z
 	
-	var pos:Vector3 = Vector3((5 * x), (5 * z) + 0.61, -88.5 + (6 * y))
+	var pos:Vector3 = Vector3((5 * x), (5 * z) + 3.11, -88.5 + (6 * y))
 	block.position = pos
 	
 	get_node("../GameManager").curr_player.tokens_left -= 1
@@ -108,7 +108,6 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 			else:
 				return -1
 		else:
-			print("Not handling turn cases as of now")
 			return -1
 			# Both are unequal, this is an edge piece
 			# Count both side lengths
@@ -134,7 +133,7 @@ func claim(space, x, y, z):
 	if (z != height - 1):
 		blocks[x][y][z + 1].available = true
 	
-	plat.position = Vector3((5 * x) + 2.5, (5 * z) + 3.11, -86 + (6 * y))
+	plat.position = Vector3((5 * x) + 2.5, (5 * z) + 5.61, -86 + (6 * y))
 
 func unclaim(space):
 	space.platform = false
