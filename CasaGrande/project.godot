@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Casa Grande"
-run/main_scene="res://main.tscn"
+config/description="A final project for Advanced Programming: Topics in Computer Science: Game Development in Godot. Digitized version of the popular board game Casa Grande."
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Board.png"
+
+[autoload]
+
+Globals="*res://globals.gd"
 
 [display]
 
