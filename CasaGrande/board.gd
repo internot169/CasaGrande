@@ -107,20 +107,6 @@ func platform(x_1, y_1, z_1, x_2, y_2, z_2):
 				return (size + 1) * (z_1 + 1)
 			else:
 				return -1
-		else:
-			return -1
-			# Both are unequal, this is an edge piece
-			# Count both side lengths
-			# if correct, return the total sum of lengths
-			# Check if the corner has the thing too
-			# var x_size = abs(x_2 - x_1)
-			# var y_size = abs(y_2 - y_1)
-			
-			# Check the top
-			# if (x_size == 2 || x_size == 3):
-			# 	pass
-			
-			# then check the side
 
 func claim(space, x, y, z):
 	space.platform = true

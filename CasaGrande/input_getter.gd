@@ -77,6 +77,8 @@ func display_input_box(z):
 	# x starts at 0, z starts at -88
 	var z_amt = -88.5
 	var x_amt = 0
+	if (z == -1):
+		z = 0
 	var pos:Vector3 = Vector3(x_amt + (5 * x), 0.61 + (4 * z), z_amt + (6 * y))
 	
 	$Highlighterinput.position = pos
