@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxud4apv37bp4"]
+[gd_scene load_steps=7 format=3 uid="uid://cxud4apv37bp4"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_sml6r"]
 [ext_resource type="Shader" path="res://ui_color.gdshader" id="2_4lhhd"]
 [ext_resource type="Texture2D" uid="uid://3gjfw7jvreso" path="res://icon.svg" id="3_psawg"]
+[ext_resource type="Texture2D" uid="uid://cpewxsbl0ymk8" path="res://default-texture.png" id="4_qwdtr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x21lg"]
 shader = ExtResource("2_4lhhd")
@@ -92,6 +93,26 @@ material = SubResource("ShaderMaterial_ej2cv")
 position = Vector2(1064, 124)
 scale = Vector2(1.25, 0.8125)
 texture = ExtResource("3_psawg")
+
+[node name="Leaderboard" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.733333, 0.462745, 0.101961, 1)
+texture_filter = 1
+position = Vector2(576.75, 336)
+scale = Vector2(9.204, 5.76)
+texture = ExtResource("4_qwdtr")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 312.0
+offset_top = 48.0
+offset_right = 1120.0
+offset_bottom = 624.0
+theme_override_font_sizes/normal_font_size = 100
+text = "1. Player 1
+2. Player 2
+3. Player 3
+4. Player 4"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="LayPlatform" to="." method="_on_lay_platform_pressed"]

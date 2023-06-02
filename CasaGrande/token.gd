@@ -3,9 +3,12 @@ class_name Player extends Node3D
 @export
 var new_color = Color(1, 1, 1, 1)
 
+@export
+var player_num:int
+
 var money = 0
 # Start with 26 tokens, CG rules
-var tokens_left = 26
+var tokens_left = 1
 
 var board_position = 1
 # Bonus position defaults to 5 as per CG rules

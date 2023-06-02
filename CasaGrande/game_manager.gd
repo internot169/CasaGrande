@@ -22,17 +22,39 @@ func _ready():
 func _process(delta):
 	$UI.display_player(curr_player, player_text)
 	
-	if (curr_player.tokens_left == 0):
+	if (curr_player.tokens_left == 0 && !game_ending):
 		game_ending = true
-		switch_turn()
 		game_ending_index = 1
+		switch_turn()
 
+func game_over():
+	$UI/Leaderboard.visible = true
+	$UI/RichTextLabel2.visible = true
+	var leaderboard_text = ""
+	
+	print(players)
+	# O(n^2), bubble sort
+	for j in range(len(players)):
+		for i in range(len(players) - 1):
+			var player_1 = get_node(players[i])
+			var player_2 = get_node(players[i + 1])
+			if (player_1.money < player_2.money):
+				print("switching")
+				var temp = players[i]
+				players[i] = players[i+1]
+				players[i+1] = temp
+	print(players)
+	for i in range(len(players)):
+		leaderboard_text += str(i + 1) + ". Player " + str(get_node(players[i]).player_num) + "\n"
+	
+	$UI/RichTextLabel2.text = leaderboard_text
 func switch_turn():
 	curr_player.check_corner()
 	$UI/Button.visible = false
 	
 	if (game_ending_index == 4):
 		curstate = States.GAME_OVER
+		game_over()
 		return
 		
 	if (game_ending):
