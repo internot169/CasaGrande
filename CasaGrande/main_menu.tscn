@@ -91,13 +91,26 @@ offset_bottom = 120.0
 color = Color(0.733333, 0.462745, 0.101961, 1)
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
 offset_left = -936.0
 offset_top = -528.0
-offset_right = -240.0
-offset_bottom = -384.0
+offset_right = 8.0
+offset_bottom = 8.0
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "Casa Grande is a board game ....."
+text = "This is a digitized version of the board game Casa Grande. The objective of the game is to lay blocks in order to build platforms. The blocks stack, and the bigger platform you build, the more money you make. 
+
+How it works:
+1. Computer generates a random number which your token moves. If your token is on a corner, your bonus score increases by 3.
+2. You may only place a block in the row/column where your token lands. If you dislike where your token lands, you may burn bonus score to move your token forward/backward.
+3. When you have two blocks you would like to connect with a platform, press \"Lay platform\" and RIGHT CLICK the two blocks which you would like to lay a platform between.
+4. You may not lay blocks in a place where there is another block or another platform.
+5. When your bonus score hits 9, it resets to zero and you get 9 coins.
+6. When a player's token count gets to 0, the game ends. Whoever has the most score wins.
+
+Controls:
+WASD to select a space in which you would like to lay a block. 
+Right click to lay platform (after pressing lay platform button)"
 
 [node name="Button" type="Button" parent="Control"]
 texture_filter = 1
