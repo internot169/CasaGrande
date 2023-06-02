@@ -74,4 +74,39 @@ popup/item_1/id = 1
 popup/item_2/text = "4 players"
 popup/item_2/id = 2
 
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 936.0
+offset_top = 528.0
+offset_right = 976.0
+offset_bottom = 568.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -936.0
+offset_top = -528.0
+offset_right = 216.0
+offset_bottom = 120.0
+color = Color(0.733333, 0.462745, 0.101961, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+offset_left = -936.0
+offset_top = -528.0
+offset_right = -240.0
+offset_bottom = -384.0
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Casa Grande is a board game ....."
+
+[node name="Button" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
 [connection signal="pressed" from="Play Game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

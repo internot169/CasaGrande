@@ -33,3 +33,11 @@ func _process(_delta):
 		curr_text = popup_menu.get_item_text(focused_item)
 		
 	$MenuButton.text = curr_text
+
+
+func _on_button_pressed():
+	$Control.visible = false
+
+
+func _on_tutorial_pressed():
+	$Control.visible = true
