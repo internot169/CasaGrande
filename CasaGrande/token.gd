@@ -8,7 +8,7 @@ var player_num:int
 
 var money = 0
 # Start with 26 tokens, CG rules
-var tokens_left = 26
+var tokens_left = 1
 
 var board_position = 1
 # Bonus position defaults to 5 as per CG rules
@@ -23,8 +23,6 @@ func _ready():
 	var mat = StandardMaterial3D.new()
 	mat.set_albedo(new_color)
 	$MeshInstance3D.set_surface_override_material(0, mat)
-	
-	position = get_node("../Board").get_pos(board_position)
 
 func check_corner():
 	if(board_position == 0 || board_position == 5 || board_position == 10 || board_position == 15):

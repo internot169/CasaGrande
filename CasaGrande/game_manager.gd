@@ -6,13 +6,21 @@ var game_ending = false
 var game_ending_index = 0
 
 @export
+var player_pos = []
 var players = []
+
 var curr_player
+var player_path = ""
 var curstate = States.PLAYER_1_TURN
 var player_text
 var can_lay_block = true
 
 func _ready():
+	for i in range(get_node("/root/Globals").player_ct):
+		players.append(player_pos[i])
+		var player = get_node(players[i])
+		player.position = get_node("../Board").get_pos(player.board_position)
+	
 	curr_player = get_node(players[0])
 	player_text = "Player 1: Play"
 	
@@ -32,18 +40,16 @@ func game_over():
 	$UI/RichTextLabel2.visible = true
 	var leaderboard_text = ""
 	
-	print(players)
 	# O(n^2), bubble sort
 	for j in range(len(players)):
 		for i in range(len(players) - 1):
 			var player_1 = get_node(players[i])
 			var player_2 = get_node(players[i + 1])
 			if (player_1.money < player_2.money):
-				print("switching")
 				var temp = players[i]
 				players[i] = players[i+1]
 				players[i+1] = temp
-	print(players)
+
 	for i in range(len(players)):
 		leaderboard_text += str(i + 1) + ". Player " + str(get_node(players[i]).player_num) + "\n"
 	
@@ -52,7 +58,9 @@ func switch_turn():
 	curr_player.check_corner()
 	$UI/Button.visible = false
 	
-	if (game_ending_index == 4):
+	var player_ct = get_node("/root/Globals").player_ct
+	
+	if (game_ending_index == player_ct):
 		curstate = States.GAME_OVER
 		game_over()
 		return
@@ -61,24 +69,46 @@ func switch_turn():
 		game_ending_index += 1
 	
 	var text = ""
-	var player_path = ""
 	
-	if curstate == States.PLAYER_1_TURN:
-		curstate = States.PLAYER_2_TURN
-		text = "Player 2: Play"
-		player_path = players[1]
-	elif curstate == States.PLAYER_2_TURN:
-		curstate = States.PLAYER_3_TURN
-		text = "Player 3: Play"
-		player_path = players[2]
-	elif curstate == States.PLAYER_3_TURN:
-		curstate = States.PLAYER_4_TURN
-		text = "Player 4: Play"
-		player_path = players[3]
-	elif curstate == States.PLAYER_4_TURN:
-		curstate = States.PLAYER_1_TURN
-		text = "Player 1: Play"
-		player_path = players[0]
+	if player_ct == 2:
+		if curstate == States.PLAYER_1_TURN:
+			curstate = States.PLAYER_2_TURN
+			text = "Player 2: Play"
+			player_path = players[1]
+		else:
+			curstate = States.PLAYER_1_TURN
+			text = "Player 1: Play"
+			player_path = players[0]
+	elif player_ct == 3:
+		if curstate == States.PLAYER_1_TURN:
+			curstate = States.PLAYER_2_TURN
+			text = "Player 2: Play"
+			player_path = players[1]
+		elif curstate == States.PLAYER_2_TURN:
+			curstate = States.PLAYER_3_TURN
+			text = "Player 3: Play"
+			player_path = players[2]
+		else:
+			curstate = States.PLAYER_1_TURN
+			text = "Player 1: Play"
+			player_path = players[0]
+	else:
+		if curstate == States.PLAYER_1_TURN:
+			curstate = States.PLAYER_2_TURN
+			text = "Player 2: Play"
+			player_path = players[1]
+		elif curstate == States.PLAYER_2_TURN:
+			curstate = States.PLAYER_3_TURN
+			text = "Player 3: Play"
+			player_path = players[2]
+		elif curstate == States.PLAYER_3_TURN:
+			curstate = States.PLAYER_4_TURN
+			text = "Player 4: Play"
+			player_path = players[3]
+		else:
+			curstate = States.PLAYER_1_TURN
+			text = "Player 1: Play"
+			player_path = players[0]
 	
 	curr_player = get_node(player_path)
 	player_text = text
